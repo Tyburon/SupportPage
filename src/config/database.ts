@@ -1,14 +1,11 @@
-export default {
-
-  username: 'docker',
+module.exports = {
+  dialect: 'postgres',
+  host: 'localhost',
+  username: 'postgres',
   password: '',
-  database: 'sqlnode',
-  options: {
-    dialect: 'postgres',
-    host: 'localhost',
-    define: {
-      timestamps: true,
-      underscored: true,
-    },
-  }
+  database: 'postgres',
+  define: {
+    timestamps: true,
+    underscored: true,
+  },
 };

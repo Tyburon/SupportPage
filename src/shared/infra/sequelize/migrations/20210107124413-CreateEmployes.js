@@ -1,10 +1,12 @@
 'use strict';
+var DataTypes = require('sequelize/lib/data-types');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable('employes', {
       id: {
-        type: Sequelize.UUIDV4,
+        type: Sequelize.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false,
       },

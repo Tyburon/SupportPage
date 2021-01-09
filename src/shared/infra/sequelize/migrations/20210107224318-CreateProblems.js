@@ -3,7 +3,7 @@ var DataTypes = require('sequelize/lib/data-types');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable('problems', {
       id: {
         type: Sequelize.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -11,10 +11,6 @@ module.exports = {
         allowNull: false,
       },
       name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      email: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -30,6 +26,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('problems');
   }
 };

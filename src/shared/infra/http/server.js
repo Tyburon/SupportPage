@@ -1,19 +1,14 @@
-import cors from 'cors';
+const express = require('express');
+const routes = require('./routes');
 
-import express, { Request, Response, NextFunction } from 'express';
-import 'express-async-errors';
-import routes from './routes';
-import AppError from '@shared/errors/AppError';
-
+require('../sequelize');
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
-
 app.use(routes);
 
-app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
+app.use(() => {
   if (err instanceof AppError) {
     return response
       .status(err.statusCode)
