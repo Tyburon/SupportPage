@@ -22,7 +22,7 @@ module.exports = {
       where: {
         id: report_id
       }
-    })
+    });
 
     if (!verifyIfExist){
       return res.json({"Error": "Chamado não encontrado. :("});
