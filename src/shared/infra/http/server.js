@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require('./routes');
 const cors = require('cors');
+const Error = require('../../errors/AppError');
 
 require('../sequelize');
 
@@ -11,7 +12,7 @@ app.use(express.json());
 app.use(routes);
 
 app.use(() => {
-  if (err instanceof AppError) {
+  if (err instanceof Error) {
     return response
       .status(err.statusCode)
       .json({ status: 'error', message: err.message });
