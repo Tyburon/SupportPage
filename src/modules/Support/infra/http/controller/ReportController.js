@@ -53,4 +53,30 @@ module.exports = {
 
     return res.json({"Sucesso": "Chamado deletado com Sucesso!!"});
   },
+
+  async findOne(req, res) {
+    const { report_id } = req.query;
+
+    const report = await Report.findOne({
+      where: {
+        id: report_id
+      },
+      include:[
+      {
+        association: 'userReports',
+        attributes: ['name'],
+      },
+      {
+        association: 'reportMessages',
+        attributes: ['message'],
+      },
+      {
+        association: 'reportProblem',
+        attributes: ['name'],
+      },
+    ],
+    });
+
+    return res.json(report);
+  },
 };
