@@ -1,7 +1,7 @@
 const Employes = require("../infra/sequelize/entities/Employes");
 const authConfig = require('@config/auth');
 const { sign } = require('jsonwebtoken');
-const Error = require('@shared/errors/')
+const Error = require('@shared/errors/Error');
 
 
 module.exports = {
@@ -14,7 +14,6 @@ module.exports = {
     });
 
     if (!employe) {
-      // return res.status(404).json({"Error": "Funcionário não encontrado. :("});
       throw new Error({
         status: 404,
         message: 'Funcionário não encontrado. :(',

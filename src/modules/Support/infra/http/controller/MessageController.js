@@ -2,7 +2,7 @@ const ReportMessages = require('../../sequelize/entities/ReportMessages');
 
 module.exports = {
   async index(req, res) {
-    const {report_id} = req.body;
+    const {report_id} = req.query;
 
     const messages = await ReportMessages.findAll({
       where: {

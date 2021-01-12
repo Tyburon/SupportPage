@@ -1,3 +1,4 @@
+
 class DefaultError extends Error {
   constructor({ status, message }) {
     super(message);
@@ -5,4 +6,4 @@ class DefaultError extends Error {
   }
 }
 
-export default DefaultError;
+module.exports = DefaultError;

@@ -20,7 +20,9 @@ class Reports extends Model {
 
   static associate(models) {
     this.hasMany(models.ReportMessages, { foreignKey: 'report_id', as: 'reportMessages' });
+    this.belongsTo(models.Problems, { foreignKey: 'problem_id',  as: 'reportProblem' });
     this.belongsTo(models.Employes, { foreignKey: 'employe_id',  as: 'employeReports' });
+    this.belongsTo(models.Users, { foreignKey: 'user_id',  as: 'userReports' });
 
   }
 }

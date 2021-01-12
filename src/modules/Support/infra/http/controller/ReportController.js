@@ -5,12 +5,26 @@ const DeleteReportService = require('../../../services/DeleteReportService');
 
 module.exports = {
   async index(req, res) {
-    const { employe_id } = req.body;
+    const { employe_id } = req.query;
 
     const reports = await Report.findAll({
       where: {
         employe_id
-      }
+      },
+      include:[
+      {
+        association: 'userReports',
+        attributes: ['name'],
+      },
+      {
+        association: 'reportMessages',
+        attributes: ['message'],
+      },
+      {
+        association: 'reportProblem',
+        attributes: ['name'],
+      },
+    ],
     });
 
     return res.json(reports);
